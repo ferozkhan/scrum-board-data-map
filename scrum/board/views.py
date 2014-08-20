@@ -1,3 +1,12 @@
-from django.shortcuts import render
 
-# Create your views here.
+from __future__ import unicode_literals
+from rest_framework import viewsets
+
+from .models import Sprint
+from .serializers import SprintSerializer
+
+
+class SprintViewSet(viewsets.ModelViewSet):
+
+    queryset = Sprint.objects.order_by('end')
+    serializer_class = SprintSerializer
